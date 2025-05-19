@@ -2,6 +2,8 @@
 from flask import Flask, request, jsonify
 import re
 from app import create_app
+from flask import session
+
 
 app = create_app()
 
