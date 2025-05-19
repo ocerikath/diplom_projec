@@ -1,7 +1,7 @@
 DB_CONFIG = {
-    'host': 'sql7.freesqldatabase.com',
+    'host': 'mysql.railway.internal',
     'port': 3306,
-    'user': 'sql7779677',
-    'password': 'PAb8wZXsRR',
-    'database': 'sql7779677'
+    'user': 'root',
+    'password': 'FNaPPiIbesspYRKPDGHIbZsDHVlMkWMq',
+    'database': 'railway'
 }
