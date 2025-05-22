@@ -124,7 +124,7 @@ def submit_feedback():
 
         print(f"Данные: {name}, {phone}, {email}, {inn}")  # Логирование
 
-        # Подключаемся к базе данных
+        # Подключение к базе данных
         app = create_app()
         connection = app.mysql_connection
         try:

@@ -107,6 +107,10 @@
     color: black;
 }
 
+.order-items h3 {
+    color: black;
+}
+
 .order-items table {
     width: 100%;
     border-collapse: collapse;

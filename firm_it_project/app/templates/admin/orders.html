@@ -42,9 +42,9 @@
             <div class="order-details">
                 <div class="client-info">
                     <h3>Клиент:</h3>
-                    <p>{{ order.full_name }}</p>
-                    <p>{{ order.phone_number }}</p>
-                    {% if order.email %}<p>{{ order.email }}</p>{% endif %}
+                    <p>{{ order.client_name }}</p>
+                    <p>{{ order.client_phone }}</p>
+                    {% if order.client_email %}<p>{{ order.client_email }}</p>{% endif %}
                 </div>
                 
                 {% if order.items %}
@@ -62,7 +62,12 @@
                         <tbody class="oreders-descr">
                             {% for item in order['items'] %}
                             <tr>
-                                <td>{{ item['product_name'] }}</td>
+                                <td>
+                                    {{ item['product_name'] }}
+                                    {% if item['variant_name'] %}
+                                        ({{ item['variant_name'] }})
+                                    {% endif %}
+                                </td>
                                 <td>{{ item['quantity'] }}</td>
                                 <td>{{ "%.2f"|format(item.price) }} ₽</td>
                                 <td>{{ "%.2f"|format(item.quantity * item.price) }} ₽</td>

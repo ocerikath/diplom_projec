@@ -121,7 +121,7 @@ header, nav {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1001; /* Убедимся, что бургер над другими элементами */
+    z-index: 1001;
 }
 
 .burger-menu span {
@@ -133,17 +133,7 @@ header, nav {
     transform-origin: center;
 }
 
-.burger-menu.active span:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
-}
 
-.burger-menu.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.burger-menu.active span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
-}
 
 
 
@@ -1060,7 +1050,7 @@ footer {
         flex-direction: column;
         position: absolute;
         top: 70px;
-        right: 20px;
+        left: 170px;
         background-color: rgba(0, 0, 0, 0.8);
         padding: 20px;
         border-radius: 10px;
@@ -1075,6 +1065,14 @@ footer {
         font-size: 15px;
     }
     
+}
+
+/* Стили для мобильного меню */
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 
@@ -1389,6 +1387,53 @@ footer {
 
     .footer-bottom {
         font-size: 11px;
+    }
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex; /* Показываем бургер-меню */
+    }
+    
+    /* Стили для открытого меню */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 0; 
+        left: 1;
+        
+        width: 100%;
+        background: #2c3e50; /* Цвет фона меню */
+        flex-direction: column;
+        padding: 20px 0;
+        box-sizing: border-box;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 18px;
+    }
+    
+    /* Анимации бургера */
+    .burger-menu.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .burger-menu.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
     }
 }
 
