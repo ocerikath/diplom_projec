@@ -593,7 +593,7 @@ auth = HTTPBasicAuth()
 
 # Можно хранить пароль в хэшированном виде:
 users = {
-    "admin": generate_password_hash("2121")  # тут твой пароль
+    "admin": generate_password_hash("2121") 
 }
 
 @auth.verify_password
