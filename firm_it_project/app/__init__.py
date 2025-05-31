@@ -5,7 +5,7 @@ from flask import session
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = '123'  # Лучше заменить на более надёжный ключ
+    app.secret_key = '123'  
 
     # Подключение к MySQL
     app.mysql_connection = pymysql.connect(
