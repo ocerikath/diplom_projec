@@ -681,29 +681,40 @@ def view_orders():
 
 @main_routes.route('/admin/orders/delete/<int:order_id>', methods=['DELETE'])
 def delete_order_ajax(order_id):
-    connection = None
     try:
-        # Получаем соединение из текущего приложения
         connection = current_app.mysql_connection
-        
+
+        # Проверка соединения, если оно "заснуло" — перезапускаем
+        try:
+            connection.ping(reconnect=True)
+        except:
+            print("Соединение устарело, пересоздаём его...")
+            from config import DB_CONFIG
+            connection = pymysql.connect(
+                host=DB_CONFIG['host'],
+                port=DB_CONFIG['port'],
+                user=DB_CONFIG['user'],
+                password=DB_CONFIG['password'],
+                db=DB_CONFIG['database'],
+                cursorclass=pymysql.cursors.DictCursor
+            )
+            current_app.mysql_connection = connection  # обновляем в app
+
         with connection.cursor() as cursor:
-            # Сначала удаляем элементы заказа (из-за ограничений внешнего ключа)
             cursor.execute("DELETE FROM order_items WHERE order_id = %s", (order_id,))
-            # Затем удаляем сам заказ
             cursor.execute("DELETE FROM orders WHERE id = %s", (order_id,))
             connection.commit()
         
         return jsonify({'success': True})
-    
+
     except Exception as e:
         print(f"Ошибка при удалении заказа: {e}")
-        if connection:
+        try:
             connection.rollback()
+        except Exception as rollback_error:
+            print(f"Ошибка при откате транзакции: {rollback_error}")
         return jsonify({'success': False, 'error': str(e)}), 500
-    
-    finally:
-        # Не закрываем соединение, так как оно управляется пулом соединений Flask
-        pass
+
 
 @main_routes.route('/submit-order', methods=['POST'])
 def submit_order():
