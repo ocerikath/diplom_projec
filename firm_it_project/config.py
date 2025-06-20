@@ -1,6 +1,6 @@
 DB_CONFIG = {
-    'host': 'nozomi.proxy.rlwy.net',
-    'port': 28623,
+    'host': 'mysql.railway.internal',
+    'port': 3306,
     'user': 'root',
     'password': 'FNaPPiIbesspYRKPDGHIbZsDHVlMkWMq',
     'database': 'railway'
