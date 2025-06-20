@@ -1,7 +1,10 @@
 DB_CONFIG = {
-    'host': 'mainline.proxy.rlwy.net',
-    'port': 24861,
+    'host': 'nozomi.proxy.rlwy.net',
+    'port': 28623,
     'user': 'root',
-    'password': 'mZdZPvGkDmBrNnuCskylWocyHxMlgzmL',
+    'password': 'FNaPPiIbesspYRKPDGHIbZsDHVlMkWMq',
     'database': 'railway'
 }
+
+
+
