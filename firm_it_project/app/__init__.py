@@ -2,12 +2,13 @@ from flask import Flask
 from config import DB_CONFIG
 import pymysql
 from flask import session
+import socket
 
 def create_app():
     app = Flask(__name__)
     app.secret_key = '123'  
     
-     socket.gethostbyaddr = lambda ip: (ip, [], [ip])
+    socket.gethostbyaddr = lambda ip: (ip, [], [ip])
      
     # Подключение к MySQL
     app.mysql_connection = pymysql.connect(
